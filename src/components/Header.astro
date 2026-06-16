@@ -1,0 +1,118 @@
+---
+import { clubConfig, languages, type Lang } from '../lib/club.config';
+import type { Translations } from '../lib/i18n/types';
+
+interface Props {
+  lang: Lang;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-[#faf9f6]/90 backdrop-blur-md border-b border-stone-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 lg:h-20">
+      <a href={lang === 'hy' ? '/' : `/${lang}/`} class="flex items-center gap-3 group">
+        <img
+          src="/logo-horizontal.svg"
+          alt="Riverok Club"
+          class="h-10 w-auto"
+          width="180"
+          height="48"
+        />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
+        <a href="#how-to-start" class="hover:text-indigo-700 transition-colors">{t.nav.howToStart}</a>
+        <a href="#tournaments" class="hover:text-indigo-700 transition-colors">{t.nav.tournaments}</a>
+        <a href="#calculator" class="hover:text-indigo-700 transition-colors">{t.nav.calculator}</a>
+        <a href="#deposit" class="hover:text-indigo-700 transition-colors">{t.nav.deposit}</a>
+        <a href="#support" class="hover:text-indigo-700 transition-colors">{t.nav.support}</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-1 bg-stone-100 rounded-full p-1">
+          {
+            languages.map((l) => (
+              <a
+                href={l.href}
+                class:list={[
+                  'px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
+                  l.code === lang
+                    ? 'bg-white text-indigo-700 shadow-sm'
+                    : 'text-stone-500 hover:text-stone-800',
+                ]}
+              >
+                {l.label}
+              </a>
+            ))
+          }
+        </div>
+
+        <a
+          href={clubConfig.telegram.botUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track="InitiateCheckout"
+          class="hidden sm:inline-flex items-center px-4 py-2 bg-indigo-700 text-white text-sm font-semibold rounded-full hover:bg-indigo-800 transition-colors"
+        >
+          {t.nav.ctaDeposit}
+        </a>
+
+        <button
+          id="mobile-menu-btn"
+          class="lg:hidden p-2 text-stone-600 hover:text-stone-900"
+          aria-label="Menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-stone-200 bg-[#faf9f6]">
+    <nav class="flex flex-col px-4 py-4 gap-3 text-sm font-medium text-stone-600">
+      <a href="#how-to-start" class="py-2 hover:text-indigo-700">{t.nav.howToStart}</a>
+      <a href="#tournaments" class="py-2 hover:text-indigo-700">{t.nav.tournaments}</a>
+      <a href="#calculator" class="py-2 hover:text-indigo-700">{t.nav.calculator}</a>
+      <a href="#deposit" class="py-2 hover:text-indigo-700">{t.nav.deposit}</a>
+      <a href="#support" class="py-2 hover:text-indigo-700">{t.nav.support}</a>
+      <div class="flex gap-2 pt-2">
+        {
+          languages.map((l) => (
+            <a
+              href={l.href}
+              class:list={[
+                'px-3 py-1.5 rounded-full text-xs font-semibold',
+                l.code === lang ? 'bg-indigo-700 text-white' : 'bg-stone-100 text-stone-600',
+              ]}
+            >
+              {l.label}
+            </a>
+          ))
+        }
+      </div>
+      <a
+        href={clubConfig.telegram.botUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-track="InitiateCheckout"
+        class="mt-2 text-center px-4 py-3 bg-indigo-700 text-white font-semibold rounded-full"
+      >
+        {t.nav.ctaDeposit}
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => menu?.classList.toggle('hidden'));
+  menu?.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => menu?.classList.add('hidden'));
+  });
+</script>

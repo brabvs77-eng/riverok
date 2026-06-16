@@ -1,0 +1,129 @@
+---
+import { clubConfig } from '../lib/club.config';
+import type { Translations } from '../lib/i18n/types';
+
+interface Props {
+  t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section class="relative pt-28 lg:pt-36 pb-16 lg:pb-24 overflow-hidden">
+  <div class="absolute top-20 right-0 w-96 h-96 bg-orange-200/30 rounded-full blur-3xl -z-10"></div>
+  <div class="absolute bottom-0 left-0 w-80 h-80 bg-indigo-200/30 rounded-full blur-3xl -z-10"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="lg:col-span-7 reveal">
+        <p class="text-sm font-semibold tracking-widest uppercase text-orange-600 mb-4">
+          {t.hero.eyebrow}
+        </p>
+        <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-stone-900 leading-[1.1] tracking-tight mb-6">
+          {t.hero.title}
+        </h1>
+        <p class="text-lg text-stone-600 max-w-xl mb-8 leading-relaxed">
+          {t.hero.subtitle}
+        </p>
+
+        <div class="flex flex-wrap gap-4 mb-10">
+          <a
+            href={clubConfig.telegram.botUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="InitiateCheckout"
+            class="inline-flex items-center gap-2 px-7 py-3.5 bg-indigo-700 text-white font-semibold rounded-full hover:bg-indigo-800 transition-all hover:shadow-lg hover:shadow-indigo-200"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.697.064-1.226-.461-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.781-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.062 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.831-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635.099-.002.321.023.465.14.121.099.154.232.17.326.015.094.034.308.019.475z" />
+            </svg>
+            {t.nav.ctaDeposit}
+          </a>
+          <a
+            href={clubConfig.telegram.managerUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-track="Lead"
+            class="inline-flex items-center gap-2 px-7 py-3.5 border-2 border-stone-300 text-stone-800 font-semibold rounded-full hover:border-indigo-700 hover:text-indigo-700 transition-all"
+          >
+            {t.nav.ctaManager}
+          </a>
+        </div>
+
+        <div class="inline-flex items-center gap-3 px-5 py-3 bg-white border border-stone-200 rounded-2xl shadow-sm">
+          <span class="text-sm text-stone-500">{t.hero.chipRate}</span>
+          <span class="w-px h-4 bg-stone-200"></span>
+          <span class="text-sm font-bold text-orange-600">PPPoker</span>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 reveal reveal-delay-2">
+        <div class="relative bg-white border border-stone-200 rounded-3xl p-8 shadow-xl shadow-stone-200/50">
+          <div class="absolute -top-3 -right-3 w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl -z-10 rotate-6"></div>
+
+          <div class="flex items-center gap-4 mb-6">
+            <img
+              src="/logo.svg"
+              alt="Riverok Club"
+              class="h-20 w-20 rounded-xl shadow-md"
+              width="80"
+              height="80"
+            />
+            <div>
+              <p class="text-sm text-stone-500 font-medium">{t.hero.clubIdLabel}</p>
+              <p class="font-serif text-3xl font-bold text-indigo-700 tracking-wide">{clubConfig.clubId}</p>
+            </div>
+          </div>
+
+          <button
+            id="copy-club-id"
+            data-club-id={clubConfig.clubId}
+            data-copy-label={t.hero.copy}
+            data-copied-label={t.hero.copied}
+            data-track="Contact"
+            class="w-full flex items-center justify-center gap-2 px-5 py-3.5 bg-stone-900 text-white font-semibold rounded-xl hover:bg-stone-800 transition-colors mb-4"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+            </svg>
+            <span id="copy-label">{t.hero.copy}</span>
+          </button>
+
+          <div class="grid grid-cols-3 gap-3 text-center">
+            <div class="p-3 bg-stone-50 rounded-xl">
+              <p class="font-serif text-xl font-bold text-stone-900">{clubConfig.stats.players}</p>
+              <p class="text-xs text-stone-500 mt-1">{t.stats.players}</p>
+            </div>
+            <div class="p-3 bg-stone-50 rounded-xl">
+              <p class="font-serif text-xl font-bold text-stone-900">{clubConfig.stats.chipsPerDay}</p>
+              <p class="text-xs text-stone-500 mt-1">{t.stats.chips}</p>
+            </div>
+            <div class="p-3 bg-stone-50 rounded-xl">
+              <p class="font-serif text-xl font-bold text-orange-600">{clubConfig.stats.support}</p>
+              <p class="text-xs text-stone-500 mt-1">{t.stats.support}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const copyBtn = document.getElementById('copy-club-id');
+  const copyLabel = document.getElementById('copy-label');
+  copyBtn?.addEventListener('click', async () => {
+    const id = copyBtn.dataset.clubId || '';
+    const copiedLabel = copyBtn.dataset.copiedLabel || 'Copied!';
+    const defaultLabel = copyBtn.dataset.copyLabel || 'Copy';
+    try {
+      await navigator.clipboard.writeText(id);
+      if (copyLabel) copyLabel.textContent = copiedLabel;
+      setTimeout(() => {
+        if (copyLabel) copyLabel.textContent = defaultLabel;
+      }, 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  });
+</script>

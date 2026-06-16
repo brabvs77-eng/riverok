@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riverok.aspriter.am/sitemap-index.xml

@@ -1,0 +1,94 @@
+---
+import { clubConfig } from '../lib/club.config';
+import type { Translations } from '../lib/i18n/types';
+
+interface Props {
+  t: Translations;
+}
+
+const { t } = Astro.props;
+---
+
+<section id="calculator" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <div>
+        <h2 class="font-serif text-3xl lg:text-4xl font-bold text-stone-900 mb-4">{t.calculator.title}</h2>
+        <p class="text-lg text-stone-600 mb-2">{t.calculator.subtitle}</p>
+        <p class="text-sm font-semibold text-orange-600">{t.hero.chipRate}</p>
+      </div>
+
+      <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-xl shadow-stone-200/40">
+        <p class="text-sm font-medium text-stone-500 mb-4">{t.calculator.quickSelect}</p>
+        <div class="flex flex-wrap gap-2 mb-8">
+          {
+            t.calculator.presets.map((amount) => (
+              <button
+                class="calc-preset px-4 py-2 text-sm font-semibold bg-stone-100 text-stone-700 rounded-full hover:bg-indigo-100 hover:text-indigo-700 transition-colors"
+                data-amount={amount}
+              >
+                {Number(amount).toLocaleString()} ֏
+              </button>
+            ))
+          }
+        </div>
+
+        <div class="mb-6">
+          <input
+            type="range"
+            id="calc-slider"
+            min="500"
+            max="500000"
+            step="500"
+            value="10000"
+            class="w-full"
+          />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4">
+          <div class="p-5 bg-stone-50 rounded-2xl">
+            <p class="text-xs text-stone-500 mb-1">{t.calculator.amdLabel}</p>
+            <p class="font-serif text-2xl font-bold text-stone-900">
+              <span id="calc-amd">10,000</span> ֏
+            </p>
+          </div>
+          <div class="p-5 bg-indigo-50 rounded-2xl">
+            <p class="text-xs text-indigo-600 mb-1">{t.calculator.chipsLabel}</p>
+            <p class="font-serif text-2xl font-bold text-indigo-700">
+              <span id="calc-chips">20</span> chips
+            </p>
+          </div>
+        </div>
+
+        <a
+          href={clubConfig.telegram.botUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-track="InitiateCheckout"
+          class="mt-6 w-full inline-flex items-center justify-center px-6 py-4 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-colors"
+        >
+          {t.calculator.deposit}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ chipRate: clubConfig.chipRate }}>
+  const slider = document.getElementById('calc-slider');
+  const amdEl = document.getElementById('calc-amd');
+  const chipsEl = document.getElementById('calc-chips');
+
+  function update(amd) {
+    const chips = Math.floor(amd / chipRate);
+    if (amdEl) amdEl.textContent = amd.toLocaleString();
+    if (chipsEl) chipsEl.textContent = chips.toLocaleString();
+    if (slider) slider.value = String(amd);
+  }
+
+  slider?.addEventListener('input', () => update(Number(slider.value)));
+
+  document.querySelectorAll('.calc-preset').forEach((btn) => {
+    btn.addEventListener('click', () => update(Number(btn.dataset.amount)));
+  });
+</script>
