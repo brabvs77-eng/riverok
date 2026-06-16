@@ -78,8 +78,7 @@ npm run build
 
 | Файл | Назначение |
 |------|------------|
-| `public/logo.svg` | Полный квадратный логотип (шапка hero, Apple Touch Icon) |
-| `public/logo-horizontal.svg` | Горизонтальный вариант для header |
-| `public/favicon.svg` | Фавикон — пика на тёмно-зелёном фоне |
-
-Чтобы заменить на оригинальный PNG/JPG логотип, положите файл в `public/logo.png` и обновите пути в компонентах.
+| `public/logo.jpg` | Основной логотип клуба |
+| `public/favicon-32.png` / `favicon-16.png` | Фавикон (вырезка пики) |
+| `public/apple-touch-icon.png` | Иконка для iOS |
+| `public/og-image.jpg` | Open Graph превью |
