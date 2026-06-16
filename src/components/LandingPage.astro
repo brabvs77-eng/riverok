@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TournamentBanner from '../components/TournamentBanner.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Features from '../components/Features.astro';
+import BankMarquee from '../components/BankMarquee.astro';
+import ChipCalculator from '../components/ChipCalculator.astro';
+import DepositGuide from '../components/DepositGuide.astro';
+import Support from '../components/Support.astro';
+import Footer from '../components/Footer.astro';
+import type { Lang } from '../lib/club.config';
+import { getTranslations } from '../lib/i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<Layout lang={lang} t={t}>
+  <Header lang={lang} t={t} />
+  <main>
+    <Hero t={t} />
+    <TournamentBanner t={t} />
+    <HowItWorks t={t} />
+    <Features t={t} />
+    <BankMarquee t={t} />
+    <ChipCalculator t={t} />
+    <DepositGuide t={t} />
+    <Support t={t} />
+  </main>
+  <Footer t={t} />
+</Layout>

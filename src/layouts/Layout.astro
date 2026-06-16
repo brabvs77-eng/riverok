@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import { clubConfig } from '../lib/club.config';
+import type { Lang } from '../lib/club.config';
+import type { Translations } from '../lib/i18n/types';
+import MetaPixel from '../components/MetaPixel.astro';
+
+interface Props {
+  lang: Lang;
+  t: Translations;
+}
+
+const { lang, t } = Astro.props;
+const canonical = lang === 'hy' ? clubConfig.domain : `${clubConfig.domain}/${lang}/`;
+---
+
+<!doctype html>
+<html lang={lang === 'hy' ? 'hy' : lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={t.meta.description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="hy" href={clubConfig.domain} />
+    <link rel="alternate" hreflang="ru" href={`${clubConfig.domain}/ru/`} />
+    <link rel="alternate" hreflang="en" href={`${clubConfig.domain}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={clubConfig.domain} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={t.meta.title} />
+    <meta property="og:description" content={t.meta.description} />
+    <meta property="og:image" content={`${clubConfig.domain}/og-image.svg`} />
+    <meta property="og:locale" content={lang === 'hy' ? 'hy_AM' : lang === 'ru' ? 'ru_RU' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={t.meta.title} />
+    <meta name="twitter:description" content={t.meta.description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap"
+      rel="stylesheet"
+    />
+    <title>{t.meta.title}</title>
+    <MetaPixel />
+  </head>
+  <body>
+    <slot />
+    <script src="/track.js" defer></script>
+  </body>
+</html>

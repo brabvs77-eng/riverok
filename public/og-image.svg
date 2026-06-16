@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect x="60" y="60" width="1080" height="510" rx="32" fill="#3730a3"/>
+  <text x="100" y="280" font-family="Georgia, serif" font-size="72" font-weight="bold" fill="#faf9f6">Riverok Club</text>
+  <text x="100" y="360" font-family="Arial, sans-serif" font-size="36" fill="#fb923c">PPPoker " Club ID 2653839</text>
+  <text x="100" y="440" font-family="Arial, sans-serif" font-size="28" fill="#c7d2fe">1 chip = 500 AMD " riverok.aspriter.am</text>
+  <circle cx="1050" cy="315" r="80" fill="#ea580c"/>
+  <text x="1020" y="330" font-family="Georgia, serif" font-size="64" font-weight="bold" fill="#faf9f6">R</text>
+</svg>
