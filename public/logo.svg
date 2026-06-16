@@ -1,5 +1,94 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
-  <rect width="64" height="64" rx="16" fill="#3730a3"/>
-  <path d="M18 44V20h10.5c5.2 0 8.5 2.8 8.5 7.2 0 3.2-1.8 5.5-4.6 6.5l6.1 10.3h-6.8l-5.4-9.4H24v9.4H18zm6-14.2h4.2c2.4 0 3.8-1.2 3.8-3.1 0-1.9-1.4-3-3.8-3H24v6.1z" fill="#faf9f6"/>
-  <circle cx="48" cy="18" r="6" fill="#ea580c"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="42%" r="68%">
+      <stop offset="0%" stop-color="#1a3d2e"/>
+      <stop offset="55%" stop-color="#0f2419"/>
+      <stop offset="100%" stop-color="#060f0b"/>
+    </radialGradient>
+    <linearGradient id="spadeMain" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#7dffb0"/>
+      <stop offset="35%" stop-color="#3ecf7a"/>
+      <stop offset="70%" stop-color="#1f7a4f"/>
+      <stop offset="100%" stop-color="#0d3d28"/>
+    </linearGradient>
+    <linearGradient id="spadeHighlight" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#b8ffd4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#2d8f5e" stop-opacity="0.2"/>
+    </linearGradient>
+    <linearGradient id="spadeShadow" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#145c3a"/>
+      <stop offset="100%" stop-color="#04150e"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9dffc0"/>
+      <stop offset="45%" stop-color="#4ecf82"/>
+      <stop offset="100%" stop-color="#1a5c3d"/>
+    </linearGradient>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.06"/>
+      </feComponentTransfer>
+    </filter>
+  </defs>
+
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <rect width="512" height="512" filter="url(#grain)" opacity="0.5"/>
+
+  <!-- Wreath left -->
+  <g fill="none" stroke="#1f5c3f" stroke-width="3" opacity="0.85">
+    <path d="M148 248c-18-28-10-62 14-82"/>
+    <path d="M132 262c-24-16-34-48-20-76"/>
+    <path d="M124 286c-10-8-16-22-14-36"/>
+  </g>
+  <g fill="#1a4d35" opacity="0.9">
+    <ellipse cx="138" cy="232" rx="10" ry="16" transform="rotate(-35 138 232)"/>
+    <ellipse cx="126" cy="258" rx="9" ry="14" transform="rotate(-20 126 258)"/>
+    <ellipse cx="118" cy="284" rx="8" ry="13" transform="rotate(-8 118 284)"/>
+    <ellipse cx="152" cy="218" rx="10" ry="15" transform="rotate(-50 152 218)"/>
+  </g>
+
+  <!-- Wreath right -->
+  <g fill="none" stroke="#1f5c3f" stroke-width="3" opacity="0.85">
+    <path d="M364 248c18-28 10-62-14-82"/>
+    <path d="M380 262c24-16 34-48 20-76"/>
+    <path d="M388 286c10-8 16-22 14-36"/>
+  </g>
+  <g fill="#1a4d35" opacity="0.9">
+    <ellipse cx="374" cy="232" rx="10" ry="16" transform="rotate(35 374 232)"/>
+    <ellipse cx="386" cy="258" rx="9" ry="14" transform="rotate(20 386 258)"/>
+    <ellipse cx="394" cy="284" rx="8" ry="13" transform="rotate(8 394 284)"/>
+    <ellipse cx="360" cy="218" rx="10" ry="15" transform="rotate(50 360 218)"/>
+  </g>
+
+  <!-- Bottom flourish -->
+  <path d="M206 300c20 18 80 18 100 0" stroke="#1f5c3f" stroke-width="3" fill="none" opacity="0.8"/>
+  <path d="M246 304c8 10 12 10 20 0" fill="#1a4d35" opacity="0.85"/>
+
+  <!-- Spade shadow -->
+  <path d="M256 98c-2 0-88 58-88 138c0 52 38 88 88 118c50-30 88-66 88-118c0-80-86-138-88-138z" fill="url(#spadeShadow)" transform="translate(4 6)"/>
+
+  <!-- Spade body -->
+  <path d="M256 92c-2 0-88 58-88 138c0 52 38 88 88 118c50-30 88-66 88-118c0-80-86-138-88-138z" fill="url(#spadeMain)"/>
+
+  <!-- Spade facet left -->
+  <path d="M256 100c-42 28-72 72-72 128c0 28 16 52 36 70c-24-22-40-50-40-84c0-58 38-98 76-114z" fill="url(#spadeHighlight)"/>
+
+  <!-- Spade stem -->
+  <path d="M236 336h40l-8 44c-2 10-10 16-12 16s-10-6-12-16l-8-44z" fill="url(#spadeMain)"/>
+  <path d="M248 336h8v50c0 4-2 6-4 6s-4-2-4-6v-50z" fill="#b8ffd4" opacity="0.35"/>
+
+  <!-- Spade top ribbons -->
+  <path d="M208 118c18-18 36-20 48-12c12 8 10 28-4 40" fill="none" stroke="#7dffb0" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M304 118c-18-18-36-20-48-12c-12 8-10 28 4 40" fill="none" stroke="#2d8f5e" stroke-width="5" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- Text -->
+  <text x="256" y="418" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="700" letter-spacing="6" fill="url(#textGrad)">RIVEROK CLUB</text>
+
+  <!-- Decorative divider -->
+  <path d="M176 438h56" stroke="#2d8f5e" stroke-width="2" opacity="0.7"/>
+  <path d="M280 438h56" stroke="#2d8f5e" stroke-width="2" opacity="0.7"/>
+  <path d="M256 432l8 12-8 12-8-12z" fill="#4ecf82"/>
+  <path d="M232 446c8 4 40 4 48 0" stroke="#1f5c3f" stroke-width="2" fill="none" opacity="0.6"/>
 </svg>

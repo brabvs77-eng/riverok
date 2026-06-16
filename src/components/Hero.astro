@@ -62,7 +62,13 @@ const { t } = Astro.props;
           <div class="absolute -top-3 -right-3 w-24 h-24 bg-gradient-to-br from-orange-400 to-orange-600 rounded-2xl -z-10 rotate-6"></div>
 
           <div class="flex items-center gap-4 mb-6">
-            <img src="/logo.svg" alt="Riverok Club" class="h-14 w-14" width="56" height="56" />
+            <img
+              src="/logo.svg"
+              alt="Riverok Club"
+              class="h-20 w-20 rounded-xl shadow-md"
+              width="80"
+              height="80"
+            />
             <div>
               <p class="text-sm text-stone-500 font-medium">{t.hero.clubIdLabel}</p>
               <p class="font-serif text-3xl font-bold text-indigo-700 tracking-wide">{clubConfig.clubId}</p>

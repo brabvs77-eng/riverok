@@ -74,6 +74,12 @@ npm run build
 - Менеджер: [@Riverok_club_manager](https://t.me/Riverok_club_manager)
 - Расписание турниров: https://t.ly/4EHW3
 
-## Логотип
+## Логотип и фавикон
 
-Замените `public/logo.svg` на загруженный логотип клуба (или добавьте `public/logo.png` и обновите ссылки в компонентах).
+| Файл | Назначение |
+|------|------------|
+| `public/logo.svg` | Полный квадратный логотип (шапка hero, Apple Touch Icon) |
+| `public/logo-horizontal.svg` | Горизонтальный вариант для header |
+| `public/favicon.svg` | Фавикон — пика на тёмно-зелёном фоне |
+
+Чтобы заменить на оригинальный PNG/JPG логотип, положите файл в `public/logo.png` и обновите пути в компонентах.
