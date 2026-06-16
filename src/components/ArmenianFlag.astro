@@ -1,0 +1,19 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = 'w-6 h-4 rounded-sm shadow-sm' } = Astro.props;
+---
+
+<svg
+  class={className}
+  viewBox="0 0 36 24"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Armenia"
+>
+  <rect width="36" height="8" fill="#D90012"></rect>
+  <rect y="8" width="36" height="8" fill="#0033A0"></rect>
+  <rect y="16" width="36" height="8" fill="#F2A800"></rect>
+</svg>

@@ -12,8 +12,8 @@ const { t } = Astro.props;
 <section id="support" class="py-20 lg:py-28">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="max-w-2xl mb-14">
-      <h2 class="font-serif text-3xl lg:text-4xl font-bold text-stone-900 mb-4">{t.support.title}</h2>
-      <p class="text-lg text-stone-600">{t.support.subtitle}</p>
+      <h2 class="font-serif text-3xl lg:text-4xl font-bold text-river-text mb-4">{t.support.title}</h2>
+      <p class="text-lg text-river-muted">{t.support.subtitle}</p>
     </div>
 
     <div class="grid lg:grid-cols-12 gap-12">
@@ -23,17 +23,17 @@ const { t } = Astro.props;
           target="_blank"
           rel="noopener noreferrer"
           data-track="Lead"
-          class="flex items-start gap-4 p-6 bg-white border border-stone-200 rounded-2xl hover:border-indigo-300 hover:shadow-lg transition-all group"
+          class="flex items-start gap-4 p-6 card rounded-2xl hover:border-river-accent/40 transition-all group"
         >
-          <div class="w-12 h-12 flex items-center justify-center bg-indigo-100 text-indigo-700 rounded-xl text-xl shrink-0">
+          <div class="w-12 h-12 flex items-center justify-center bg-river-bg-light text-river-accent rounded-xl text-xl shrink-0 border border-river-border">
             👤
           </div>
           <div>
-            <p class="font-semibold text-stone-900 group-hover:text-indigo-700 transition-colors">
+            <p class="font-semibold text-river-text group-hover:text-river-accent-bright transition-colors">
               {t.support.manager.title}
             </p>
-            <p class="text-sm text-indigo-600 font-medium mb-1">{clubConfig.telegram.manager}</p>
-            <p class="text-sm text-stone-500">{t.support.manager.role}</p>
+            <p class="text-sm text-river-accent font-medium mb-1">{clubConfig.telegram.manager}</p>
+            <p class="text-sm text-river-muted">{t.support.manager.role}</p>
           </div>
         </a>
 
@@ -42,31 +42,31 @@ const { t } = Astro.props;
           target="_blank"
           rel="noopener noreferrer"
           data-track="InitiateCheckout"
-          class="flex items-start gap-4 p-6 bg-white border border-stone-200 rounded-2xl hover:border-orange-300 hover:shadow-lg transition-all group"
+          class="flex items-start gap-4 p-6 card rounded-2xl hover:border-river-gold/40 transition-all group"
         >
-          <div class="w-12 h-12 flex items-center justify-center bg-orange-100 text-orange-700 rounded-xl text-xl shrink-0">
+          <div class="w-12 h-12 flex items-center justify-center bg-river-bg-light text-river-gold rounded-xl text-xl shrink-0 border border-river-border">
             🤖
           </div>
           <div>
-            <p class="font-semibold text-stone-900 group-hover:text-orange-600 transition-colors">
+            <p class="font-semibold text-river-text group-hover:text-river-gold transition-colors">
               {t.support.bot.title}
             </p>
-            <p class="text-sm text-orange-600 font-medium mb-1">{clubConfig.telegram.bot}</p>
-            <p class="text-sm text-stone-500">{t.support.bot.role}</p>
+            <p class="text-sm text-river-gold font-medium mb-1">{clubConfig.telegram.bot}</p>
+            <p class="text-sm text-river-muted">{t.support.bot.role}</p>
           </div>
         </a>
       </div>
 
       <div class="lg:col-span-7">
-        <h3 class="font-serif text-xl font-bold text-stone-900 mb-6">{t.support.faqTitle}</h3>
+        <h3 class="font-serif text-xl font-bold text-river-text mb-6">{t.support.faqTitle}</h3>
         <div class="space-y-3">
           {
             t.support.faq.map((item) => (
-              <details class="group bg-white border border-stone-200 rounded-xl overflow-hidden">
-                <summary class="flex items-center justify-between p-5 font-medium text-stone-900 hover:bg-stone-50 transition-colors">
+              <details class="group card rounded-xl overflow-hidden">
+                <summary class="flex items-center justify-between p-5 font-medium text-river-text hover:bg-river-bg-light/30 transition-colors">
                   {item.q}
                   <svg
-                    class="w-5 h-5 text-stone-400 group-open:rotate-180 transition-transform shrink-0 ml-4"
+                    class="w-5 h-5 text-river-muted group-open:rotate-180 transition-transform shrink-0 ml-4"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -74,7 +74,7 @@ const { t } = Astro.props;
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                   </svg>
                 </summary>
-                <div class="px-5 pb-5 text-stone-600 text-sm leading-relaxed border-t border-stone-100 pt-4">
+                <div class="px-5 pb-5 text-river-muted text-sm leading-relaxed border-t border-river-border pt-4">
                   {item.a}
                 </div>
               </details>

@@ -9,13 +9,13 @@ const { t } = Astro.props;
 const featureIcons = ['🛡️', '⚡', '🏦', '🏆', '⭐', '📱'];
 ---
 
-<section class="py-20 lg:py-28 bg-white">
+<section class="py-20 lg:py-28 bg-river-surface/50 border-y border-river-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-12 gap-12 mb-16">
       <div class="lg:col-span-5">
-        <p class="text-sm font-semibold tracking-widest uppercase text-indigo-600 mb-3">{t.features.eyebrow}</p>
-        <h2 class="font-serif text-3xl lg:text-4xl font-bold text-stone-900 mb-4">{t.features.title}</h2>
-        <p class="text-lg text-stone-600">{t.features.subtitle}</p>
+        <p class="text-sm font-semibold tracking-widest uppercase text-river-accent mb-3">{t.features.eyebrow}</p>
+        <h2 class="font-serif text-3xl lg:text-4xl font-bold text-river-text mb-4">{t.features.title}</h2>
+        <p class="text-lg text-river-muted">{t.features.subtitle}</p>
       </div>
     </div>
 
@@ -23,14 +23,14 @@ const featureIcons = ['🛡️', '⚡', '🏦', '🏆', '⭐', '📱'];
       {
         t.features.items.map((item, i) => (
           <div
-            class="group p-6 lg:p-8 border border-stone-200 rounded-2xl hover:border-indigo-300 hover:shadow-lg hover:shadow-indigo-100/50 transition-all reveal"
+            class="group p-6 lg:p-8 card rounded-2xl hover:border-river-accent/40 transition-all reveal"
             style={`animation-delay: ${i * 0.08}s`}
           >
             <span class="text-3xl mb-4 block">{featureIcons[i]}</span>
-            <h3 class="font-serif text-lg font-bold text-stone-900 mb-2 group-hover:text-indigo-700 transition-colors">
+            <h3 class="font-serif text-lg font-bold text-river-text mb-2 group-hover:text-river-accent-bright transition-colors">
               {item.title}
             </h3>
-            <p class="text-stone-600 text-sm leading-relaxed">{item.description}</p>
+            <p class="text-river-muted text-sm leading-relaxed">{item.description}</p>
           </div>
         ))
       }

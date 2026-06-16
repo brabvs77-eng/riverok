@@ -1,6 +1,7 @@
 ---
 import { clubConfig, languages, type Lang } from '../lib/club.config';
 import type { Translations } from '../lib/i18n/types';
+import ArmenianFlag from './ArmenianFlag.astro';
 
 interface Props {
   lang: Lang;
@@ -10,29 +11,30 @@ interface Props {
 const { lang, t } = Astro.props;
 ---
 
-<header class="fixed top-0 left-0 right-0 z-50 bg-[#faf9f6]/90 backdrop-blur-md border-b border-stone-200">
+<header class="fixed top-0 left-0 right-0 z-50 bg-river-bg/85 backdrop-blur-md border-b border-river-border">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <a href={lang === 'hy' ? '/' : `/${lang}/`} class="flex items-center gap-3 group">
         <img
           src="/logo.jpg"
           alt="Riverok Club"
-          class="h-12 w-12 rounded-lg object-cover"
+          class="h-12 w-12 rounded-lg object-cover ring-1 ring-river-border"
           width="48"
           height="48"
         />
+        <ArmenianFlag class="w-5 h-3.5 rounded-sm shadow-sm ring-1 ring-river-border/50" />
       </a>
 
-      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-stone-600">
-        <a href="#how-to-start" class="hover:text-indigo-700 transition-colors">{t.nav.howToStart}</a>
-        <a href="#tournaments" class="hover:text-indigo-700 transition-colors">{t.nav.tournaments}</a>
-        <a href="#calculator" class="hover:text-indigo-700 transition-colors">{t.nav.calculator}</a>
-        <a href="#deposit" class="hover:text-indigo-700 transition-colors">{t.nav.deposit}</a>
-        <a href="#support" class="hover:text-indigo-700 transition-colors">{t.nav.support}</a>
+      <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-river-muted">
+        <a href="#how-to-start" class="hover:text-river-accent-bright transition-colors">{t.nav.howToStart}</a>
+        <a href="#tournaments" class="hover:text-river-accent-bright transition-colors">{t.nav.tournaments}</a>
+        <a href="#calculator" class="hover:text-river-accent-bright transition-colors">{t.nav.calculator}</a>
+        <a href="#deposit" class="hover:text-river-accent-bright transition-colors">{t.nav.deposit}</a>
+        <a href="#support" class="hover:text-river-accent-bright transition-colors">{t.nav.support}</a>
       </nav>
 
       <div class="flex items-center gap-3">
-        <div class="hidden sm:flex items-center gap-1 bg-stone-100 rounded-full p-1">
+        <div class="hidden sm:flex items-center gap-1 bg-river-surface rounded-full p-1 border border-river-border">
           {
             languages.map((l) => (
               <a
@@ -40,8 +42,8 @@ const { lang, t } = Astro.props;
                 class:list={[
                   'px-2.5 py-1 rounded-full text-xs font-semibold transition-all',
                   l.code === lang
-                    ? 'bg-white text-indigo-700 shadow-sm'
-                    : 'text-stone-500 hover:text-stone-800',
+                    ? 'bg-river-accent text-river-bg shadow-sm'
+                    : 'text-river-muted hover:text-river-text',
                 ]}
               >
                 {l.label}
@@ -55,14 +57,14 @@ const { lang, t } = Astro.props;
           target="_blank"
           rel="noopener noreferrer"
           data-track="InitiateCheckout"
-          class="hidden sm:inline-flex items-center px-4 py-2 bg-indigo-700 text-white text-sm font-semibold rounded-full hover:bg-indigo-800 transition-colors"
+          class="hidden sm:inline-flex items-center px-4 py-2 btn-primary text-sm rounded-full"
         >
           {t.nav.ctaDeposit}
         </a>
 
         <button
           id="mobile-menu-btn"
-          class="lg:hidden p-2 text-stone-600 hover:text-stone-900"
+          class="lg:hidden p-2 text-river-muted hover:text-river-text"
           aria-label="Menu"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,13 +75,13 @@ const { lang, t } = Astro.props;
     </div>
   </div>
 
-  <div id="mobile-menu" class="hidden lg:hidden border-t border-stone-200 bg-[#faf9f6]">
-    <nav class="flex flex-col px-4 py-4 gap-3 text-sm font-medium text-stone-600">
-      <a href="#how-to-start" class="py-2 hover:text-indigo-700">{t.nav.howToStart}</a>
-      <a href="#tournaments" class="py-2 hover:text-indigo-700">{t.nav.tournaments}</a>
-      <a href="#calculator" class="py-2 hover:text-indigo-700">{t.nav.calculator}</a>
-      <a href="#deposit" class="py-2 hover:text-indigo-700">{t.nav.deposit}</a>
-      <a href="#support" class="py-2 hover:text-indigo-700">{t.nav.support}</a>
+  <div id="mobile-menu" class="hidden lg:hidden border-t border-river-border bg-river-bg/95">
+    <nav class="flex flex-col px-4 py-4 gap-3 text-sm font-medium text-river-muted">
+      <a href="#how-to-start" class="py-2 hover:text-river-accent-bright">{t.nav.howToStart}</a>
+      <a href="#tournaments" class="py-2 hover:text-river-accent-bright">{t.nav.tournaments}</a>
+      <a href="#calculator" class="py-2 hover:text-river-accent-bright">{t.nav.calculator}</a>
+      <a href="#deposit" class="py-2 hover:text-river-accent-bright">{t.nav.deposit}</a>
+      <a href="#support" class="py-2 hover:text-river-accent-bright">{t.nav.support}</a>
       <div class="flex gap-2 pt-2">
         {
           languages.map((l) => (
@@ -87,7 +89,7 @@ const { lang, t } = Astro.props;
               href={l.href}
               class:list={[
                 'px-3 py-1.5 rounded-full text-xs font-semibold',
-                l.code === lang ? 'bg-indigo-700 text-white' : 'bg-stone-100 text-stone-600',
+                l.code === lang ? 'bg-river-accent text-river-bg' : 'bg-river-surface text-river-muted border border-river-border',
               ]}
             >
               {l.label}
@@ -100,7 +102,7 @@ const { lang, t } = Astro.props;
         target="_blank"
         rel="noopener noreferrer"
         data-track="InitiateCheckout"
-        class="mt-2 text-center px-4 py-3 bg-indigo-700 text-white font-semibold rounded-full"
+        class="mt-2 text-center px-4 py-3 btn-primary rounded-full"
       >
         {t.nav.ctaDeposit}
       </a>

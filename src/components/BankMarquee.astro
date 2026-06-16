@@ -10,19 +10,19 @@ const { t } = Astro.props;
 const banks = [...clubConfig.banks, ...clubConfig.banks];
 ---
 
-<section class="py-12 border-y border-stone-200 overflow-hidden">
+<section class="py-12 border-y border-river-border overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-    <p class="text-sm font-semibold text-stone-500 uppercase tracking-widest text-center">{t.banks.title}</p>
+    <p class="text-sm font-semibold text-river-muted uppercase tracking-widest text-center">{t.banks.title}</p>
   </div>
   <div class="relative">
     <div class="flex animate-marquee whitespace-nowrap">
       {
         banks.map((bank) => (
-          <div class="inline-flex items-center gap-3 mx-8 px-6 py-3 bg-white border border-stone-200 rounded-full">
-            <span class="w-10 h-10 flex items-center justify-center bg-indigo-50 text-indigo-700 font-bold text-xs rounded-full">
+          <div class="inline-flex items-center gap-3 mx-8 px-6 py-3 card rounded-full">
+            <span class="w-10 h-10 flex items-center justify-center bg-river-bg-light text-river-accent-bright font-bold text-xs rounded-full border border-river-border">
               {bank.code}
             </span>
-            <span class="font-medium text-stone-700">{bank.name}</span>
+            <span class="font-medium text-river-text">{bank.name}</span>
           </div>
         ))
       }

@@ -13,18 +13,18 @@ const { t } = Astro.props;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
       <div>
-        <h2 class="font-serif text-3xl lg:text-4xl font-bold text-stone-900 mb-4">{t.calculator.title}</h2>
-        <p class="text-lg text-stone-600 mb-2">{t.calculator.subtitle}</p>
-        <p class="text-sm font-semibold text-orange-600">{t.hero.chipRate}</p>
+        <h2 class="font-serif text-3xl lg:text-4xl font-bold text-river-text mb-4">{t.calculator.title}</h2>
+        <p class="text-lg text-river-muted mb-2">{t.calculator.subtitle}</p>
+        <p class="text-sm font-semibold text-river-gold">{t.hero.chipRate}</p>
       </div>
 
-      <div class="bg-white border border-stone-200 rounded-3xl p-8 shadow-xl shadow-stone-200/40">
-        <p class="text-sm font-medium text-stone-500 mb-4">{t.calculator.quickSelect}</p>
+      <div class="card-elevated rounded-3xl p-8">
+        <p class="text-sm font-medium text-river-muted mb-4">{t.calculator.quickSelect}</p>
         <div class="flex flex-wrap gap-2 mb-8">
           {
             t.calculator.presets.map((amount) => (
               <button
-                class="calc-preset px-4 py-2 text-sm font-semibold bg-stone-100 text-stone-700 rounded-full hover:bg-indigo-100 hover:text-indigo-700 transition-colors"
+                class="calc-preset px-4 py-2 text-sm font-semibold bg-river-bg text-river-muted rounded-full hover:bg-river-bg-light hover:text-river-accent-bright transition-colors border border-river-border"
                 data-amount={amount}
               >
                 {Number(amount).toLocaleString()} ֏
@@ -46,15 +46,15 @@ const { t } = Astro.props;
         </div>
 
         <div class="grid grid-cols-2 gap-4">
-          <div class="p-5 bg-stone-50 rounded-2xl">
-            <p class="text-xs text-stone-500 mb-1">{t.calculator.amdLabel}</p>
-            <p class="font-serif text-2xl font-bold text-stone-900">
+          <div class="p-5 bg-river-bg/60 rounded-2xl border border-river-border">
+            <p class="text-xs text-river-muted mb-1">{t.calculator.amdLabel}</p>
+            <p class="font-serif text-2xl font-bold text-river-text">
               <span id="calc-amd">10,000</span> ֏
             </p>
           </div>
-          <div class="p-5 bg-indigo-50 rounded-2xl">
-            <p class="text-xs text-indigo-600 mb-1">{t.calculator.chipsLabel}</p>
-            <p class="font-serif text-2xl font-bold text-indigo-700">
+          <div class="p-5 bg-river-bg-light/40 rounded-2xl border border-river-accent/30">
+            <p class="text-xs text-river-accent mb-1">{t.calculator.chipsLabel}</p>
+            <p class="font-serif text-2xl font-bold text-river-accent-bright">
               <span id="calc-chips">20</span> chips
             </p>
           </div>
@@ -65,7 +65,7 @@ const { t } = Astro.props;
           target="_blank"
           rel="noopener noreferrer"
           data-track="InitiateCheckout"
-          class="mt-6 w-full inline-flex items-center justify-center px-6 py-4 bg-orange-600 text-white font-semibold rounded-xl hover:bg-orange-700 transition-colors"
+          class="mt-6 w-full inline-flex items-center justify-center px-6 py-4 btn-primary rounded-xl"
         >
           {t.calculator.deposit}
         </a>
