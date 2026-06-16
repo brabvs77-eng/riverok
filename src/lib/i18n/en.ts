@@ -54,6 +54,8 @@ const en: Translations = {
     ],
     appStore: 'App Store',
     googlePlay: 'Google Play',
+    windows: 'Windows',
+    macOS: 'macOS',
   },
   features: {
     eyebrow: 'Why Riverok',

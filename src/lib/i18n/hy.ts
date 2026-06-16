@@ -57,6 +57,8 @@ const hy: Translations = {
     ],
     appStore: 'App Store',
     googlePlay: 'Google Play',
+    windows: 'Windows',
+    macOS: 'macOS',
   },
   features: {
     eyebrow: 'Ինչու՞ Riverok',

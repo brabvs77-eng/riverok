@@ -16,8 +16,10 @@ export const clubConfig = {
     pixelId: '4451322711789343',
   },
   stores: {
-    appStore: 'https://apps.apple.com/app/pppoker-home-games/id1101445405',
+    appStore: 'https://apps.apple.com/in/app/pppoker-nlh-plo-ofc/id1101622978',
     googlePlay: 'https://play.google.com/store/apps/details?id=com.lein.pppoker.android',
+    windows: 'https://www.pppoker.net/pcpackage/PPPoker_Windows_latest.msi',
+    macOS: 'https://www.pppoker.net/pcpackage/PPPoker_Mac_latest.dmg',
   },
   stats: {
     players: '500+',

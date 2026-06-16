@@ -38,6 +38,8 @@ export interface Translations {
     steps: { title: string; description: string }[];
     appStore: string;
     googlePlay: string;
+    windows: string;
+    macOS: string;
   };
   features: {
     eyebrow: string;

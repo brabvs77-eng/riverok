@@ -54,6 +54,8 @@ const ru: Translations = {
     ],
     appStore: 'App Store',
     googlePlay: 'Google Play',
+    windows: 'Windows',
+    macOS: 'macOS',
   },
   features: {
     eyebrow: 'Почему Riverok',
