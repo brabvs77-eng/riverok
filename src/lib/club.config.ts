@@ -15,6 +15,7 @@ export const clubConfig = {
   meta: {
     pixelId: '4451322711789343',
   },
+  yandexMetrikaId: 109945688,
   stores: {
     appStore: 'https://apps.apple.com/in/app/pppoker-nlh-plo-ofc/id1101622978',
     googlePlay: 'https://play.google.com/store/apps/details?id=com.lein.pppoker.android',

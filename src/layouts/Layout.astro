@@ -4,6 +4,7 @@ import { clubConfig } from '../lib/club.config';
 import type { Lang } from '../lib/club.config';
 import type { Translations } from '../lib/i18n/types';
 import MetaPixel from '../components/MetaPixel.astro';
+import YandexMetrika from '../components/YandexMetrika.astro';
 
 interface Props {
   lang: Lang;
@@ -49,6 +50,7 @@ const canonical = lang === 'hy' ? clubConfig.domain : `${clubConfig.domain}/${la
     />
     <title>{t.meta.title}</title>
     <MetaPixel />
+    <YandexMetrika />
   </head>
   <body>
     <slot />
