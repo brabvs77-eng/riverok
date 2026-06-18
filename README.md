@@ -49,9 +49,18 @@ npm run build
 
 ## Meta Pixel + Conversions API
 
-- Browser Pixel загружается на всех страницах (`PageView`)
-- CTA-клики отправляют события через Pixel + server-side CAPI с дедупликацией по `event_id`
+Гибридная схема: каждое событие отправляется **и через browser Pixel, и через CAPI** с одинаковым `event_id` — Meta автоматически дедуплицирует пары в течение 48 часов.
+
+- `PageView` — при загрузке страницы (Pixel + CAPI)
+- CTA-клики — Pixel + CAPI с общим `event_id`
+- `fbclid` из URL рекламы конвертируется в `fbc` для лучшей атрибуции
 - Endpoint: `POST /api/meta-events` (Cloudflare Function)
+
+### Проверка дедупликации
+
+1. Meta Events Manager → **Test Events**
+2. Откройте сайт и кликните CTA
+3. Должно быть **1 событие** (не 2) с пометкой deduplicated / received from browser and server
 
 ### Отслеживаемые события
 
