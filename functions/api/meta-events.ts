@@ -4,6 +4,7 @@ interface MetaEventBody {
   event_source_url?: string;
   fbp?: string;
   fbc?: string;
+  user_data?: Record<string, string>;
   custom_data?: Record<string, unknown>;
 }
 
@@ -21,6 +22,52 @@ const ALLOWED_EVENTS = new Set([
   'Contact',
   'CompleteRegistration',
 ]);
+
+const HASHED_USER_FIELDS = new Set(['em', 'ph', 'fn', 'ln', 'ct', 'st', 'zp', 'country', 'external_id', 'ge', 'db']);
+
+async function sha256(value: string): Promise<string> {
+  const normalized = value.toLowerCase().trim();
+  const data = new TextEncoder().encode(normalized);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hash))
+    .map((byte) => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function normalizePhone(phone: string): string {
+  return phone.replace(/\D/g, '');
+}
+
+async function buildHashedUserData(
+  raw: Record<string, string> | undefined,
+  clientIp: string,
+  userAgent: string,
+  fbp?: string,
+  fbc?: string
+): Promise<Record<string, string>> {
+  const userData: Record<string, string> = {
+    client_ip_address: clientIp,
+    client_user_agent: userAgent,
+  };
+
+  if (fbp) userData.fbp = fbp;
+  if (fbc) userData.fbc = fbc;
+
+  if (!raw) return userData;
+
+  for (const [field, value] of Object.entries(raw)) {
+    if (!value || !HASHED_USER_FIELDS.has(field)) continue;
+
+    if (field === 'ph') {
+      userData.ph = await sha256(normalizePhone(value));
+      continue;
+    }
+
+    userData[field] = await sha256(value);
+  }
+
+  return userData;
+}
 
 function extractFbclid(url: string): string | undefined {
   try {
@@ -80,6 +127,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
     const userAgent = request.headers.get('User-Agent') || '';
     const eventSourceUrl = body.event_source_url || request.headers.get('Referer') || '';
     const fbc = buildFbc(body.fbc, eventSourceUrl);
+    const userData = await buildHashedUserData(body.user_data, clientIp, userAgent, body.fbp, fbc);
 
     const eventPayload: Record<string, unknown> = {
       event_name: body.event_name,
@@ -87,12 +135,7 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
       event_id: body.event_id,
       event_source_url: eventSourceUrl,
       action_source: 'website',
-      user_data: {
-        client_ip_address: clientIp,
-        client_user_agent: userAgent,
-        ...(body.fbp ? { fbp: body.fbp } : {}),
-        ...(fbc ? { fbc } : {}),
-      },
+      user_data: userData,
       custom_data: body.custom_data || {},
     };
 

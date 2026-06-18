@@ -13,6 +13,13 @@ function getFbc() {
   return 'fb.1.' + Date.now() + '.' + fbclid;
 }
 
+function getUserDataForCapi() {
+  if (window.RiverokMeta && typeof window.RiverokMeta.getAdvancedMatchingParams === 'function') {
+    return window.RiverokMeta.getAdvancedMatchingParams();
+  }
+  return { country: 'am' };
+}
+
 function generateEventId() {
   if (typeof crypto !== 'undefined' && crypto.randomUUID) {
     return crypto.randomUUID();
@@ -30,6 +37,7 @@ async function sendToCapi(eventName, eventId, customData) {
       event_source_url: window.location.href,
       fbp: getCookie('_fbp'),
       fbc: getFbc(),
+      user_data: getUserDataForCapi(),
       custom_data: customData || {},
     }),
     keepalive: true,
@@ -51,7 +59,6 @@ async function trackEvent(eventName, customData) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-  // PageView with Pixel + CAPI deduplication
   trackEvent('PageView');
 
   document.querySelectorAll('[data-track]').forEach(function (el) {

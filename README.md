@@ -51,6 +51,27 @@ npm run build
 
 Гибридная схема: каждое событие отправляется **и через browser Pixel, и через CAPI** с одинаковым `event_id` — Meta автоматически дедуплицирует пары в течение 48 часов.
 
+### Manual Advanced Matching
+
+Pixel инициализируется с третьим параметром `fbq('init', pixelId, { ... })`:
+
+```javascript
+fbq('init', '4451322711789343', {
+  country: 'am',
+  external_id: '<visitor-uuid>',
+  // em, ph, fn, ln — если доступны
+});
+```
+
+- Pixel **сам хэширует** поля SHA-256 перед отправкой
+- CAPI получает те же поля и хэширует их на сервере
+- По умолчанию: `country: 'am'` + анонимный `external_id` (localStorage)
+- Чтобы добавить email/телефон позже (например, из Telegram-бота):
+
+```javascript
+RiverokMeta.setUserData({ em: 'user@email.com', ph: '37499123456' });
+```
+
 - `PageView` — при загрузке страницы (Pixel + CAPI)
 - CTA-клики — Pixel + CAPI с общим `event_id`
 - `fbclid` из URL рекламы конвертируется в `fbc` для лучшей атрибуции

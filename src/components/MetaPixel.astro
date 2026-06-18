@@ -2,8 +2,10 @@
 import { clubConfig } from '../lib/club.config';
 ---
 
-<!-- Meta Pixel -->
+<!-- Meta Pixel with Manual Advanced Matching -->
 <script is:inline define:vars={{ pixelId: clubConfig.meta.pixelId }}>
+  window.__metaPixelId = pixelId;
+
   !(function (f, b, e, v, n, t, s) {
     if (f.fbq) return;
     n = f.fbq = function () {
@@ -20,7 +22,12 @@ import { clubConfig } from '../lib/club.config';
     s = b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t, s);
   })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', pixelId);
+
+  var advancedMatching = window.RiverokMeta
+    ? window.RiverokMeta.getAdvancedMatchingParams()
+    : { country: 'am' };
+
+  fbq('init', pixelId, advancedMatching);
 </script>
 <noscript>
   <img
