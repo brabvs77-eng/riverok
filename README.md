@@ -108,7 +108,7 @@ RiverokMeta.setUserData({ em: 'user@email.com', ph: '37499123456' });
 
 | Файл | Назначение |
 |------|------------|
-| `public/logo.jpg` | Основной логотип клуба |
+| `public/logo.png` | Основной логотип клуба (из `ривер лого.png`) |
 | `public/favicon-32.png` / `favicon-16.png` | Фавикон (вырезка пики) |
 | `public/apple-touch-icon.png` | Иконка для iOS |
 | `public/og-image.jpg` | Open Graph превью |
